@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>绿奴属性测试 - 你的真实绿帽欲望</title>
+    <meta name="description" content="诚实回答这40道题，挖掘你在绿奴（cuckold）方面的真实属性。题目非常直接。">
+    <meta name="theme-color" content="#1a1a2e">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+            touch-action: pan-y;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .back-btn {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 1.3em;
+            color: #ff6b9d;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-size: 0.85em;
+            color: #888;
+        }
+        .progress-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .question-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .question-num {
+            font-size: 0.85em;
+            color: #ff6b9d;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .option-btn:hover, .option-btn:active {
+            background: rgba(255,107,157,0.2);
+            border-color: rgba(255,107,157,0.5);
+        }
+        .option-btn.selected {
+            background: rgba(255,107,157,0.3);
+            border-color: #ff6b9d;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .nav-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-btn.prev {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .nav-btn.next {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: #fff;
+        }
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .result-container {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .result-title {
+            font-size: 1.5em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+        }
+        .score-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .score-item:last-child {
+            border-bottom: none;
+        }
+        .score-bar {
+            width: 60%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            border-radius: 4px;
+        }
+        .restart-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            border: none;
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .warning {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.85em;
+            color: #ff9999;
+        }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="position: relative;">
+            <button class="back-btn" onclick="location.href='index.html'">←</button>
+            <h1>绿奴属性测试 - 你的真实绿帽欲望</h1>
+            <div class="subtitle">40题露骨测试｜仅限18+</div>
+        </header>
+        
+        <div class="warning">内容极度露骨，仅供成人自我探索。请在私密环境下进行。现实玩法必须双方完全同意且安全。</div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        
+        <div class="question-container" id="questionContainer">
+            <div class="question-num" id="questionNum"></div>
+            <div class="question-text" id="questionText"></div>
+            <div class="options" id="optionsContainer"></div>
+            <div class="nav-buttons">
+                <button class="nav-btn prev" id="prevBtn" onclick="prevQuestion()">上一题</button>
+                <button class="nav-btn next" id="nextBtn" onclick="nextQuestion()" disabled>下一题</button>
+            </div>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <div class="result-title">你的绿奴属性测试结果</div>
+            <div id="scoreCards"></div>
+            <button class="restart-btn" onclick="location.reload()">重新测试</button>
+        </div>
+    </div>
+    
+    <script>
+        const quizData = {"title":"绿奴属性测试 - 你的真实绿帽欲望","subtitle":"40题露骨测试｜仅限18+","description":"诚实回答这40道题，挖掘你在绿奴（cuckold）方面的真实属性。题目非常直接。","warning":"内容极度露骨，仅供成人自我探索。请在私密环境下进行。现实玩法必须双方完全同意且安全。","options":[{"value":5,"text":"非常同意"},{"value":4,"text":"同意"},{"value":3,"text":"一般"},{"value":2,"text":"不同意"},{"value":1,"text":"完全不感兴趣"}],"questions":[{"id":1,"text":"看到老婆/女友被其他男人操，我会异常兴奋而不是生气。","category":"cuckold"},{"id":2,"text":"我喜欢幻想老婆在外面偷情，回家后详细告诉我过程。","category":"cuckold"},{"id":3,"text":"我愿意跪在床边，看着老婆被别人操到高潮尖叫。","category":"cuckold"},{"id":4,"text":"老婆被别人内射后，我喜欢舔干净她体内的精液。","category":"cleanup"},{"id":5,"text":"我幻想老婆穿最骚的衣服出去约炮，回来让我闻她身上的味道。","category":"cuckold"},{"id":6,"text":"被老婆嘲笑我鸡巴小、满足不了她时，我会特别硬。","category":"humiliation"},{"id":7,"text":"我喜欢老婆一边被别人操，一边打电话告诉我她有多爽。","category":"cuckold"},{"id":8,"text":"我愿意给老婆的情人开车、付房费，甚至帮他们买套套。","category":"service"},{"id":9,"text":"老婆和别人做爱时，我最兴奋的是听她叫别人老公或爸爸。","category":"humiliation"},{"id":10,"text":"我幻想被老婆锁上贞操带，只能看着她被别人操却不能硬。","category":"denial"},{"id":11,"text":"老婆被操完后让我闻她被操肿的骚逼，我会兴奋到发抖。","category":"cleanup"},{"id":12,"text":"我喜欢老婆公开在朋友圈发和野男人的暧昧照，暗示我被绿。","category":"humiliation"},{"id":13,"text":"我愿意跪着给老婆的情人口交，帮他舔硬后再让他操我老婆。","category":"service"},{"id":14,"text":"被老婆和她情人一起嘲笑我是没用的绿奴，我会特别爽。","category":"humiliation"},{"id":15,"text":"我幻想老婆怀上别人的孩子，却让我负责养。","category":"extreme"},{"id":16,"text":"老婆出去约炮时，我会在家边撸边等她发战况照片。","category":"cuckold"},{"id":17,"text":"我喜欢被老婆命令戴绿帽、穿女装，在旁边伺候她和别人。","category":"humiliation"},{"id":18,"text":"看到老婆被别人操到喷水，而我只能在旁边看，我会高潮。","category":"cuckold"},{"id":19,"text":"我愿意给老婆的情人洗内裤、擦身体，当他们的专属奴仆。","category":"service"},{"id":20,"text":"老婆告诉我她被别人操得腿软走不动路时，我会瞬间射了。","category":"humiliation"},{"id":21,"text":"我幻想老婆在KTV或酒吧被几个男人轮流玩，而我只能在外面等。","category":"extreme"},{"id":22,"text":"被老婆用脚踩着我的鸡巴，听她描述被别人操的细节。","category":"humiliation"},{"id":23,"text":"我喜欢老婆回家后直接坐在我脸上，让我吃别人射在她逼里的精液。","category":"cleanup"},{"id":24,"text":"我愿意当老婆和情人的司机，送他们去开房然后在车里等着。","category":"service"},{"id":25,"text":"老婆被别人操得叫得比跟我做爱时大声多了，这让我特别兴奋。","category":"cuckold"},{"id":26,"text":"我幻想被锁贞操带几个月，只能靠看老婆被操的视频自慰。","category":"denial"},{"id":27,"text":"被老婆和她情人一起羞辱，说我连看他们做爱的资格都没有。","category":"humiliation"},{"id":28,"text":"我喜欢给老婆买最贵的性感内衣，让她穿给别的男人看。","category":"service"},{"id":29,"text":"老婆被内射后逼里流出精液，我会主动跪下去全部舔干净。","category":"cleanup"},{"id":30,"text":"我兴奋于老婆公开说她已经不爱我，只把我当绿奴用。","category":"humiliation"},{"id":31,"text":"我愿意看着老婆被多人轮奸，然后帮他们一个个舔干净。","category":"extreme"},{"id":32,"text":"被老婆命令不准射，只能看着她被操到多次高潮。","category":"denial"},{"id":33,"text":"我喜欢老婆在做爱时大声说别人的鸡巴比我大得多。","category":"humiliation"},{"id":34,"text":"我幻想长期当老婆的专属绿奴，负责家务和伺候她的情人。","category":"service"},{"id":35,"text":"老婆和别人在床上操，我只能跪在床下听声音。","category":"cuckold"},{"id":36,"text":"被老婆用绿帽羞辱视频威胁我，会让我异常兴奋。","category":"humiliation"},{"id":37,"text":"我喜欢闻老婆身上留下的别人体液和香水混合的味道。","category":"cleanup"},{"id":38,"text":"我愿意付钱让老婆去高级酒店被有钱男人操。","category":"service"},{"id":39,"text":"老婆被操完后让我亲她的骚逼，告诉我这是别人的味道。","category":"humiliation"},{"id":40,"text":"我天生就喜欢当绿奴，被戴绿帽、被羞辱、被奴役让我最爽。","category":"cuckold"}],"resultPage":{"title":"你的绿奴属性测试结果","description":"根据你的40题答案，以下是详细分析：","overallLevel":{"title":"整体绿奴级别判断","levels":{"low":{"name":"轻度绿奴倾向","range":"总分 40-80","desc":"你对绿奴元素有一定好奇和轻微兴奋，但还不是核心欲望。更多停留在幻想阶段。"},"medium":{"name":"中度绿奴倾向","range":"总分 81-120","desc":"你明显享受被绿、羞辱和旁观的感觉，已有较强的绿奴属性。适合逐步和伴侣沟通尝试。"},"high":{"name":"重度绿奴倾向","range":"总分 121-160","desc":"绿奴玩法对你有强烈吸引力，你很可能已经沉迷于清理、禁欲、服务等细节。"},"extreme":{"name":"极重度绿奴倾向","range":"总分 161-200","desc":"你有极强的绿奴属性，极端玩法（如多人、公开、长期奴役）也能让你高度兴奋。需非常谨慎探索。"}}},"scores":{"cuckold":{"name":"Cuckold（绿奴核心）","desc":"对伴侣被别人操这件事本身的兴奋程度。"},"humiliation":{"name":"Humiliation（羞辱倾向）","desc":"享受被言语羞辱、嘲笑鸡巴小、戴绿帽的感觉。"},"cleanup":{"name":"Cleanup（清理倾向）","desc":"喜欢舔精、吃内射、闻别人留下的味道。"},"service":{"name":"Service（服务倾向）","desc":"愿意为伴侣和她的情人提供开车、付钱、当奴仆等服务。"},"denial":{"name":"Denial（禁欲倾向）","desc":"享受被锁贞操带、禁止高潮，只能看别人爽。"},"extreme":{"name":"Extreme（极端倾向）","desc":"对多人轮、怀孕风险、公开羞辱等重口玩法的兴趣。"}},"interpretation":"测试仅供娱乐与自我探索参考。得分越高，说明你在该维度上的绿奴倾向越明显。很多人是混合型（例如高羞辱+中清理）。","advice":{"low":"建议先从幻想和情话开始，和伴侣分享你的轻微想法，观察她的反应。不要急于实践，保持沟通。","medium":"可以尝试轻度玩法，如让她描述幻想中的场景、看相关视频时一起自慰，或轻微言语羞辱。必须提前设定安全词和界限。","high":"强烈建议和伴侣深入沟通你的需求，建立明确的规则（如同意名单、安全措施）。推荐从旁观、清理等中度玩法起步，逐步加深。定期复盘感受。","extreme":"极重度倾向需极高信任基础。强烈推荐先在双方都完全自愿的前提下慢慢尝试，并考虑心理咨询或 kink-friendly 社区经验分享。记住：任何时候都可以停下，保护关系和心理健康最重要。"}},"mobileTips":"建议竖屏使用，滑动或点击作答更顺畅。完成后可截图保存完整结果。"};
+        const type = 'green';
+        let currentQuestion = 0;
+        let answers = [];
+        
+        const questions = [{"id":1,"text":"看到老婆/女友被其他男人操，我会异常兴奋而不是生气。","category":"cuckold"},{"id":2,"text":"我喜欢幻想老婆在外面偷情，回家后详细告诉我过程。","category":"cuckold"},{"id":3,"text":"我愿意跪在床边，看着老婆被别人操到高潮尖叫。","category":"cuckold"},{"id":4,"text":"老婆被别人内射后，我喜欢舔干净她体内的精液。","category":"cleanup"},{"id":5,"text":"我幻想老婆穿最骚的衣服出去约炮，回来让我闻她身上的味道。","category":"cuckold"},{"id":6,"text":"被老婆嘲笑我鸡巴小、满足不了她时，我会特别硬。","category":"humiliation"},{"id":7,"text":"我喜欢老婆一边被别人操，一边打电话告诉我她有多爽。","category":"cuckold"},{"id":8,"text":"我愿意给老婆的情人开车、付房费，甚至帮他们买套套。","category":"service"},{"id":9,"text":"老婆和别人做爱时，我最兴奋的是听她叫别人老公或爸爸。","category":"humiliation"},{"id":10,"text":"我幻想被老婆锁上贞操带，只能看着她被别人操却不能硬。","category":"denial"},{"id":11,"text":"老婆被操完后让我闻她被操肿的骚逼，我会兴奋到发抖。","category":"cleanup"},{"id":12,"text":"我喜欢老婆公开在朋友圈发和野男人的暧昧照，暗示我被绿。","category":"humiliation"},{"id":13,"text":"我愿意跪着给老婆的情人口交，帮他舔硬后再让他操我老婆。","category":"service"},{"id":14,"text":"被老婆和她情人一起嘲笑我是没用的绿奴，我会特别爽。","category":"humiliation"},{"id":15,"text":"我幻想老婆怀上别人的孩子，却让我负责养。","category":"extreme"},{"id":16,"text":"老婆出去约炮时，我会在家边撸边等她发战况照片。","category":"cuckold"},{"id":17,"text":"我喜欢被老婆命令戴绿帽、穿女装，在旁边伺候她和别人。","category":"humiliation"},{"id":18,"text":"看到老婆被别人操到喷水，而我只能在旁边看，我会高潮。","category":"cuckold"},{"id":19,"text":"我愿意给老婆的情人洗内裤、擦身体，当他们的专属奴仆。","category":"service"},{"id":20,"text":"老婆告诉我她被别人操得腿软走不动路时，我会瞬间射了。","category":"humiliation"},{"id":21,"text":"我幻想老婆在KTV或酒吧被几个男人轮流玩，而我只能在外面等。","category":"extreme"},{"id":22,"text":"被老婆用脚踩着我的鸡巴，听她描述被别人操的细节。","category":"humiliation"},{"id":23,"text":"我喜欢老婆回家后直接坐在我脸上，让我吃别人射在她逼里的精液。","category":"cleanup"},{"id":24,"text":"我愿意当老婆和情人的司机，送他们去开房然后在车里等着。","category":"service"},{"id":25,"text":"老婆被别人操得叫得比跟我做爱时大声多了，这让我特别兴奋。","category":"cuckold"},{"id":26,"text":"我幻想被锁贞操带几个月，只能靠看老婆被操的视频自慰。","category":"denial"},{"id":27,"text":"被老婆和她情人一起羞辱，说我连看他们做爱的资格都没有。","category":"humiliation"},{"id":28,"text":"我喜欢给老婆买最贵的性感内衣，让她穿给别的男人看。","category":"service"},{"id":29,"text":"老婆被内射后逼里流出精液，我会主动跪下去全部舔干净。","category":"cleanup"},{"id":30,"text":"我兴奋于老婆公开说她已经不爱我，只把我当绿奴用。","category":"humiliation"},{"id":31,"text":"我愿意看着老婆被多人轮奸，然后帮他们一个个舔干净。","category":"extreme"},{"id":32,"text":"被老婆命令不准射，只能看着她被操到多次高潮。","category":"denial"},{"id":33,"text":"我喜欢老婆在做爱时大声说别人的鸡巴比我大得多。","category":"humiliation"},{"id":34,"text":"我幻想长期当老婆的专属绿奴，负责家务和伺候她的情人。","category":"service"},{"id":35,"text":"老婆和别人在床上操，我只能跪在床下听声音。","category":"cuckold"},{"id":36,"text":"被老婆用绿帽羞辱视频威胁我，会让我异常兴奋。","category":"humiliation"},{"id":37,"text":"我喜欢闻老婆身上留下的别人体液和香水混合的味道。","category":"cleanup"},{"id":38,"text":"我愿意付钱让老婆去高级酒店被有钱男人操。","category":"service"},{"id":39,"text":"老婆被操完后让我亲她的骚逼，告诉我这是别人的味道。","category":"humiliation"},{"id":40,"text":"我天生就喜欢当绿奴，被戴绿帽、被羞辱、被奴役让我最爽。","category":"cuckold"}];
+        const totalQuestions = questions.length;
+        
+        function init() {
+            loadProgress();
+            renderQuestion();
+        }
+        
+        function loadProgress() {
+            const saved = localStorage.getItem('xunmengge_green_progress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                currentQuestion = data.current || 0;
+                answers = data.answers || [];
+            }
+        }
+        
+        function saveProgress() {
+            localStorage.setItem('xunmengge_green_progress', JSON.stringify({
+                current: currentQuestion,
+                answers: answers
+            }));
+        }
+        
+        function renderQuestion() {
+            if (currentQuestion >= totalQuestions) {
+                showResult();
+                return;
+            }
+            
+            const q = questions[currentQuestion];
+            document.getElementById('questionNum').textContent = '第 ' + (currentQuestion + 1) + ' 题 / 共 ' + totalQuestions + ' 题';
+            document.getElementById('questionText').textContent = q.text;
+            document.getElementById('progressFill').style.width = ((currentQuestion + 1) / totalQuestions * 100) + '%';
+            
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            
+            const options = quizData.options || [
+                {value: 5, text: '非常同意'},
+                {value: 4, text: '同意'},
+                {value: 3, text: '一般'},
+                {value: 2, text: '不同意'},
+                {value: 1, text: '完全不感兴趣'}
+            ];
+            
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn' + (answers[currentQuestion] === opt.value ? ' selected' : '');
+                btn.textContent = opt.text;
+                btn.onclick = () => selectOption(opt.value, btn);
+                container.appendChild(btn);
+            });
+            
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = answers[currentQuestion] === undefined;
+            document.getElementById('nextBtn').textContent = currentQuestion === totalQuestions - 1 ? '查看结果' : '下一题';
+        }
+        
+        function selectOption(value, btn) {
+            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            answers[currentQuestion] = value;
+            document.getElementById('nextBtn').disabled = false;
+            saveProgress();
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        }
+        
+        function showResult() {
+            document.getElementById('questionContainer').classList.add('hidden');
+            document.getElementById('resultContainer').style.display = 'block';
+            localStorage.removeItem('xunmengge_green_progress');
+            
+            const categories = {};
+            questions.forEach((q, i) => {
+                if (!categories[q.category]) categories[q.category] = [];
+                categories[q.category].push(answers[i] || 3);
+            });
+            
+            let html = '';
+            for (const [cat, scores] of Object.entries(categories)) {
+                const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+                const percent = Math.round((avg - 1) / 4 * 100);
+                const info = (quizData.resultPage?.scores || {})[cat] || {name: cat, desc: ''};
+                html += '<div class="score-card"><div class="score-item"><span>' + info.name + '</span><span>' + percent + '%</span></div><div class="score-bar"><div class="score-fill" style="width:' + percent + '%"></div></div><p style="font-size:0.85em;color:#888;margin-top:10px">' + info.desc + '</p></div>';
+            }
+            
+            document.getElementById('scoreCards').innerHTML = html;
+        }
+        
+        init();
+    </script>
+</body>
+</html>
