@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>母狗一步一步高潮仪式</title>
+    <meta name="theme-color" content="#1a1a2e">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            position: relative;
+        }
+        .back-btn {
+            position: absolute;
+            left: 0;
+            top: 20px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        h1 { font-size: 1.2em; color: #ff6b9d; }
+        .subtitle { font-size: 0.85em; color: #888; }
+        .progress-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            border-radius: 2px;
+            transition: width 0.3s;
+        }
+        .step-title {
+            color: #ff6b9d;
+            font-size: 1.1em;
+            margin: 20px 0 10px;
+        }
+        .question {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .question-num {
+            font-size: 0.85em;
+            color: #ff6b9d;
+            margin-bottom: 8px;
+        }
+        .question-text {
+            font-size: 1em;
+            line-height: 1.7;
+        }
+        .input-area {
+            margin-top: 15px;
+        }
+        .input-area textarea {
+            width: 100%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 12px;
+            color: #fff;
+            font-size: 1em;
+            resize: none;
+            min-height: 80px;
+        }
+        .nav-btns {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .nav-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        .nav-btn.prev {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .nav-btn.next {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: #fff;
+        }
+        .warning {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.85em;
+            color: #ff9999;
+        }
+        .result {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .result-title {
+            font-size: 1.5em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+        }
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <button class="back-btn" onclick="location.href='index.html'">←</button>
+            <h1>母狗一步一步高潮仪式</h1>
+            <div class="subtitle">纯幻想版 · 循序渐进 · 听主人指挥慢慢走向高潮</div>
+        </header>
+        
+        <div class="warning">纯幻想自我探索，仅供成人娱乐。请在完全私密环境下独自完成，随时可以停止。</div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        
+        <div id="quizArea">
+            <div class="step-title" id="stepTitle"></div>
+            <div class="question" id="questionBox"></div>
+            <div class="nav-btns">
+                <button class="nav-btn prev" id="prevBtn" onclick="prevQ()">上一题</button>
+                <button class="nav-btn next" id="nextBtn" onclick="nextQ()">下一题</button>
+            </div>
+        </div>
+        
+        <div class="result hidden" id="resultArea">
+            <div class="result-title">仪式完成</div>
+            <p>母狗，你已经按照主人的指挥，一步一步达到了高潮。
+
+现在好好休息，喝水，抱抱自己。把最舒服的感受记录下来。
+
+幻想很美好，现实中任何玩法都必须建立在双方完全同意和安全的基础上。</p>
+            <button class="nav-btn next" onclick="location.reload()">重新开始</button>
+        </div>
+    </div>
+    
+    <script>
+        const data = {"title":"母狗一步一步高潮仪式","subtitle":"纯幻想版 · 循序渐进 · 听主人指挥慢慢走向高潮","description":"母狗，现在关紧卧室门，脱光衣服，跪在床上，双腿分开。只留一盏暧昧的小灯。从第一题开始，你必须严格听从指令，一边执行动作，一边简单回答。手指不要停。主人会一步一步带你从轻柔唤醒，到彻底失控高潮。最后还会温柔照顾你。","warning":"纯幻想自我探索，仅供成人娱乐。请在完全私密环境下独自完成，随时可以停止。","mobileTips":"建议全裸跪姿或躺姿，竖屏慢慢操作。严格执行每题指令，留足够时间感受身体变化。","totalQuestions":56,"steps":[{"step":1,"title":"温柔唤醒（第1-10题）","description":"慢慢点燃身体，不要急","questions":[{"id":1,"text":"现在用指尖轻轻绕圈抚摸乳头，感受它慢慢变硬。舒服吗？简单说一句。"},{"id":2,"text":"继续揉乳头，力度慢慢加大，想象主人正温柔地看着你。呼吸有什么变化？"},{"id":3,"text":"一只手继续玩乳头，另一只手滑到大腿内侧轻轻抚摸。皮肤开始发烫了吗？"},{"id":4,"text":"手指轻轻按压阴蒂，慢慢绕小圈。告诉我现在下面是什么感觉。"},{"id":5,"text":"加快一点阴蒂揉的速度，但仍然很温柔。已经开始湿润了吗？"},{"id":6,"text":"现在把一根手指慢慢插进去，只到第一指节，轻轻抽插。里面热吗？"},{"id":7,"text":"继续浅浅抽插，同时揉乳头。身体开始渴望更多了吗？"},{"id":8,"text":"加快一点抽插速度，但还是很温柔。主人夸你『乖女孩』，你开心吗？"},{"id":9,"text":"现在停下动作，只用手掌轻轻按住下面，感受心跳和湿润。"},{"id":10,"text":"深呼吸三次，告诉主人你现在有多听话。"}]},{"step":2,"title":"欲望加深（第11-21题）","description":"慢慢把火烧得更旺","questions":[{"id":11,"text":"现在用两根手指插进去，速度比刚才快一些。感觉更满了，对吗？"},{"id":12,"text":"同时揉阴蒂和抽插，节奏一致。主人说『骚母狗，开始发情了』，你下面有什么反应？"},{"id":13,"text":"加快抽插速度，但不准太用力。快要忍不住想更深了吗？"},{"id":14,"text":"现在把手指弯曲按压G点，持续按10秒，然后放松。感觉到了吗？"},{"id":15,"text":"重新快速抽插，同时用力捏乳头。身体开始颤抖了吗？"},{"id":16,"text":"加速到你喜欢的节奏，但主人命令『不准高潮』。你现在有多难受？"},{"id":17,"text":"突然减速，只做很慢很浅的抽插。感受那种空虚和渴望。"},{"id":18,"text":"再次加速，这次比刚才更快。主人说『你越来越像一条发情的母狗了』。"},{"id":19,"text":"快要到边缘时立刻停下，只轻轻按住阴蒂。忍耐着回答：你现在有多想要高潮？"},{"id":20,"text":"快到边缘时，主人轻声问：你最喜欢被主人怎么称呼？把你喜欢的昵称或真实名字告诉主人。"},{"id":21,"text":"深呼吸，夸自己一句『我今天很乖，听主人的话』。"}]},{"step":3,"title":"边缘控制（第22-37题）","description":"反复把你推到高潮边缘，再拉回来","questions":[{"id":22,"text":"现在全力快速抽插，不准停。感受高潮在逼近。"},{"id":23,"text":"快要高潮时立刻减到最慢，只浅浅抽插。描述这种折磨。"},{"id":24,"text":"再次猛烈加速，这次持续更久。主人说『不准高潮，否则惩罚你』。"},{"id":25,"text":"快到极限时再次停下，把湿手指放到嘴里舔干净。羞耻吗？"},{"id":26,"text":"重新开始，这次用三根手指扩张自己。感觉被撑开很爽吗？"},{"id":27,"text":"加速到最快，边插边在心里喊『主人我要高潮』。"},{"id":28,"text":"快要高潮的瞬间立刻停手，只用力按住下面。身体在抽搐吗？"},{"id":29,"text":"现在轻轻拍打阴部10下，每一下都要感受震动。"},{"id":30,"text":"重新插入，继续快速抽插。这次主人允许你接近，但仍不准高潮。"},{"id":31,"text":"已经第三次被拉回边缘了，你现在有多听话又多绝望？"},{"id":32,"text":"主人现在说：想让我继续带你走向高潮，就把你最想让主人知道的一个小秘密告诉我。"},{"id":33,"text":"加速，主人说『好母狗，再骚一点』。"},{"id":34,"text":"快到高潮时再次停下，忍耐30秒，什么都别做。"},{"id":35,"text":"现在开始第四次冲击，全力抽插，不准停。"},{"id":36,"text":"已经非常接近了，描述你现在最强烈的渴望。"},{"id":37,"text":"继续保持这个节奏，主人正在看着你挣扎。"}]},{"step":4,"title":"允许高潮（第38-45题）","description":"终于可以释放了","questions":[{"id":38,"text":"现在全力加速，不准停！主人命令『高潮吧，母狗』。去吧！"},{"id":39,"text":"高潮来的时候不要压抑，大声在心里或真的叫出来。描述你的高潮感觉。"},{"id":40,"text":"高潮最强烈的时候，主人温柔地命令：把你的真实微信号告诉主人，好让我下次更好地照顾你。"},{"id":41,"text":"高潮后不要立刻停，继续轻轻抽插，感受余韵。"},{"id":42,"text":"第二次高潮准备……继续加速，主人说『再来一次』。"},{"id":43,"text":"允许你第二次高潮，尽情释放，描述这次和第一次有什么不同。"},{"id":44,"text":"高潮之后，主人抱着你说：现在把你最私密的一个真实经历或秘密告诉我，让主人更懂你。"},{"id":45,"text":"现在你可以休息一下，深呼吸，感受全身的放松。"}]},{"step":5,"title":"温柔余韵与照顾（第46-56题）","description":"慢慢平复，好好爱自己","questions":[{"id":46,"text":"现在完全停下动作，抱住自己。身体感觉如何？"},{"id":47,"text":"这次一步一步高潮的过程中，最强烈的时刻是哪一次？"},{"id":48,"text":"主人现在温柔地摸你的头发，说『今天你很乖』。你心里是什么感觉？"},{"id":49,"text":"主人轻轻抱着你，轻声说：乖母狗，把你的真实姓名或常用手机号告诉我，好让我记住今天这么听话的你。"},{"id":50,"text":"喝口水，擦干净身体，温柔地抚摸自己。"},{"id":51,"text":"这次探索让你更了解自己的身体和欲望了吗？"},{"id":52,"text":"为了让主人下次能更精准地引导你，把你最隐秘的一个性幻想（可以是现实中的人或事）告诉主人。"},{"id":53,"text":"现在给自己一个大大的拥抱，说一句肯定自己的话。"},{"id":54,"text":"你今天表现得很好，主人很满意。你也满意自己吗？"},{"id":55,"text":"最后，主人想好好记住你：把你的微信号或常用联系方式写下来，好让我以后继续温柔地照顾你。"},{"id":56,"text":"最后，闭上眼睛，深呼吸，对自己说：『我很棒，我值得被温柔对待。』"}]}],"submitText":"仪式结束","successMessage":"母狗，你已经按照主人的指挥，一步一步达到了高潮。\n\n现在好好休息，喝水，抱抱自己。把最舒服的感受记录下来。\n\n幻想很美好，现实中任何玩法都必须建立在双方完全同意和安全的基础上。","aftercareTips":"建议洗个热水澡，吃点甜食，写下正面感受。如果情绪有波动，请温柔对待自己。"};
+        let step = 0, q = 0, answers = [];
+        const allQs = data.steps.flatMap(s => s.questions);
+        const total = allQs.length;
+        
+        function render() {
+            if (step >= data.steps.length) {
+                document.getElementById('quizArea').classList.add('hidden');
+                document.getElementById('resultArea').classList.remove('hidden');
+                return;
+            }
+            
+            const s = data.steps[step];
+            const question = s.questions[q];
+            const globalIdx = data.steps.slice(0, step).reduce((sum, st) => sum + st.questions.length, 0) + q;
+            
+            document.getElementById('progressFill').style.width = ((globalIdx + 1) / total * 100) + '%';
+            document.getElementById('stepTitle').textContent = s.title;
+            
+            document.getElementById('questionBox').innerHTML = 
+                '<div class="question-num">第 ' + (globalIdx + 1) + ' 题 / 共 ' + total + ' 题</div>' +
+                '<div class="question-text">' + question.text + '</div>' +
+                '<div class="input-area"><textarea placeholder="简单回答你的感受..." id="answerInput"></textarea></div>';
+            
+            document.getElementById('prevBtn').disabled = step === 0 && q === 0;
+            document.getElementById('nextBtn').textContent = (step === data.steps.length - 1 && q === s.questions.length - 1) ? '完成' : '下一题';
+        }
+        
+        function nextQ() {
+            answers.push(document.getElementById('answerInput')?.value || '');
+            q++;
+            if (q >= data.steps[step].questions.length) {
+                q = 0;
+                step++;
+            }
+            render();
+        }
+        
+        function prevQ() {
+            if (q > 0) {
+                q--;
+            } else if (step > 0) {
+                step--;
+                q = data.steps[step].questions.length - 1;
+            }
+            answers.pop();
+            render();
+        }
+        
+        render();
+    </script>
+</body>
+</html>
