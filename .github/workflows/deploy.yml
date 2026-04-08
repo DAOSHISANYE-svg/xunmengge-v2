@@ -10,15 +10,22 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      deployments: write
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: xunmengge-v2
-          directory: .
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy via CF API
+        run: |
+          echo "Testing token..."
+          curl -s -X GET \
+            'https://api.cloudflare.com/client/v4/accounts/071c36c227211679dd1537626856116f/pages/projects/xunmengge-v2' \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}"
+          
+          echo "Creating deployment..."
+          MANIFEST='{"/index.html":"abc123"}'
+          curl -s -X POST \
+            'https://api.cloudflare.com/client/v4/accounts/071c36c227211679dd1537626856116f/pages/projects/xunmengge-v2/deployments' \
+            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d "{\"branch\":\"main\",\"manifest\":${MANIFEST}}"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
