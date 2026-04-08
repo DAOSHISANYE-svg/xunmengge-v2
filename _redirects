@@ -1,4 +1,10 @@
+# 所有页面直接访问
+/ /index.html 200
 /sm-test.html /sm-test.html 200
+/sm-test /sm-test.html 200
 /bitch-test.html /bitch-test.html 200
+/bitch-test /bitch-test.html 200
 /green-test.html /green-test.html 200
+/green-test /green-test.html 200
 /slave-test.html /slave-test.html 200
+/slave-test /slave-test.html 200
