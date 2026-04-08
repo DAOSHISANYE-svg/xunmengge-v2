@@ -13,19 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Deploy via CF API
-        run: |
-          echo "Testing token..."
-          curl -s -X GET \
-            'https://api.cloudflare.com/client/v4/accounts/071c36c227211679dd1537626856116f/pages/projects/xunmengge-v2' \
-            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}"
-          
-          echo "Creating deployment..."
-          MANIFEST='{"/index.html":"abc123"}'
-          curl -s -X POST \
-            'https://api.cloudflare.com/client/v4/accounts/071c36c227211679dd1537626856116f/pages/projects/xunmengge-v2/deployments' \
-            -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
-            -H "Content-Type: application/json" \
-            -d "{\"branch\":\"main\",\"manifest\":${MANIFEST}}"
+      - name: Deploy via wrangler
+        run: npx wrangler pages deploy . --project-name=xunmengge-v2
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
