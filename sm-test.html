@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>SM属性测试 - 你的真实欲望</title>
+    <meta name="description" content="快速测出你在SM中的真实属性：Dominant / Submissive / Sadist / Masochist。答案越诚实，结果越准。">
+    <meta name="theme-color" content="#1a1a2e">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+            touch-action: pan-y;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .back-btn {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 1.3em;
+            color: #ff6b9d;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-size: 0.85em;
+            color: #888;
+        }
+        .progress-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .question-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .question-num {
+            font-size: 0.85em;
+            color: #ff6b9d;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .option-btn:hover, .option-btn:active {
+            background: rgba(255,107,157,0.2);
+            border-color: rgba(255,107,157,0.5);
+        }
+        .option-btn.selected {
+            background: rgba(255,107,157,0.3);
+            border-color: #ff6b9d;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .nav-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-btn.prev {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .nav-btn.next {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: #fff;
+        }
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .result-container {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .result-title {
+            font-size: 1.5em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+        }
+        .score-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .score-item:last-child {
+            border-bottom: none;
+        }
+        .score-bar {
+            width: 60%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            border-radius: 4px;
+        }
+        .restart-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            border: none;
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .warning {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.85em;
+            color: #ff9999;
+        }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="position: relative;">
+            <button class="back-btn" onclick="location.href='index.html'">←</button>
+            <h1>SM属性测试 - 你的真实欲望</h1>
+            <div class="subtitle">40题露骨测试｜仅限18+</div>
+        </header>
+        
+        <div class="warning">内容非常露骨，仅供成人娱乐与自我探索。请确保私密环境，尊重同意与安全。</div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        
+        <div class="question-container" id="questionContainer">
+            <div class="question-num" id="questionNum"></div>
+            <div class="question-text" id="questionText"></div>
+            <div class="options" id="optionsContainer"></div>
+            <div class="nav-buttons">
+                <button class="nav-btn prev" id="prevBtn" onclick="prevQuestion()">上一题</button>
+                <button class="nav-btn next" id="nextBtn" onclick="nextQuestion()" disabled>下一题</button>
+            </div>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <div class="result-title">你的SM属性测试结果</div>
+            <div id="scoreCards"></div>
+            <button class="restart-btn" onclick="location.reload()">重新测试</button>
+        </div>
+    </div>
+    
+    <script>
+        const quizData = {"title":"SM属性测试 - 你的真实欲望","subtitle":"40题露骨测试｜仅限18+","description":"快速测出你在SM中的真实属性：Dominant / Submissive / Sadist / Masochist。答案越诚实，结果越准。","warning":"内容非常露骨，仅供成人娱乐与自我探索。请确保私密环境，尊重同意与安全。","options":[{"value":5,"text":"非常同意"},{"value":4,"text":"同意"},{"value":3,"text":"一般"},{"value":2,"text":"不同意"},{"value":1,"text":"完全不感兴趣"}],"questions":[{"id":1,"text":"我喜欢把伴侣绑紧，让TA完全动不了，然后慢慢玩弄。","category":"dominant"},{"id":2,"text":"看着伴侣跪着求我允许高潮，我会特别兴奋。","category":"dominant"},{"id":3,"text":"我喜欢用鞭子或巴掌把伴侣打到皮肤发红。","category":"sadist"},{"id":4,"text":"被扇耳光、骂我是贱货时，我会瞬间湿了。","category":"masochist"},{"id":5,"text":"我幻想把伴侣关在笼子里，当宠物一样完全掌控。","category":"dominant"},{"id":6,"text":"被粗暴深喉到快窒息，我反而觉得很爽。","category":"masochist"},{"id":7,"text":"我喜欢命令伴侣穿暴露SM装，在外面偷偷玩弄TA。","category":"dominant"},{"id":8,"text":"乳头或下面被夹子夹到剧痛，我会特别兴奋。","category":"masochist"},{"id":9,"text":"我喜欢把精液或尿射在伴侣脸上，强迫TA吞下去。","category":"sadist"},{"id":10,"text":"被踩脸、吐口水、当成人肉家具，我会爽到不行。","category":"masochist"},{"id":11,"text":"性爱时我总想完全主导，决定什么时候让对方高潮。","category":"dominant"},{"id":12,"text":"被绑成羞耻姿势，长时间边缘控制不让高潮，我很享受。","category":"masochist"},{"id":13,"text":"看着伴侣因为疼痛哭着求饶，我会特别有征服感。","category":"sadist"},{"id":14,"text":"我幻想被多人轮流使用，当彻底的公共性奴。","category":"masochist"},{"id":15,"text":"我喜欢给伴侣戴项圈、牵狗链，像遛狗一样玩。","category":"dominant"},{"id":16,"text":"被电击棒刺激下面或乳头，那种又痛又麻的感觉让我上瘾。","category":"masochist"},{"id":17,"text":"我喜欢粗暴地拳交或用超大玩具折磨伴侣。","category":"sadist"},{"id":18,"text":"我更喜欢被命令、被打、被完全掌控。","category":"submissive"},{"id":19,"text":"我喜欢把伴侣吊起来，从各种角度随意侵犯。","category":"dominant"},{"id":20,"text":"被脚踩脸或下面，强迫舔脚喝尿，我会极度兴奋。","category":"masochist"},{"id":21,"text":"我幻想24小时控制伴侣的一切，包括上厕所权限。","category":"dominant"},{"id":22,"text":"疼痛和羞辱的话反而让我性欲爆棚。","category":"masochist"},{"id":23,"text":"我喜欢在伴侣身上滴热蜡，然后突然猛插。","category":"sadist"},{"id":24,"text":"被打屁股打到肿得坐不下去，我却觉得很刺激。","category":"masochist"},{"id":25,"text":"我喜欢命令伴侣自慰给我看，却不准高潮。","category":"dominant"},{"id":26,"text":"被蒙眼、塞口球，完全失去感官后被玩弄，我很喜欢。","category":"submissive"},{"id":27,"text":"我喜欢用贞操带锁住伴侣，只由我决定什么时候解锁。","category":"dominant"},{"id":28,"text":"被强迫喝体液、清理精液或当厕所，我会很兴奋。","category":"masochist"},{"id":29,"text":"我喜欢大声辱骂伴侣，说TA只是我的肉便器。","category":"sadist"},{"id":30,"text":"被吊起来鞭打、滴蜡、同时被插，我最渴望这种玩法。","category":"masochist"},{"id":31,"text":"我天生喜欢在性爱中担任主导一方。","category":"dominant"},{"id":32,"text":"我享受被彻底征服，当没有尊严的性奴隶。","category":"submissive"},{"id":33,"text":"我喜欢用各种工具长时间折磨伴侣直到TA崩溃。","category":"sadist"},{"id":34,"text":"被虐待到高潮失禁，对我来说是最极致的快乐。","category":"masochist"},{"id":35,"text":"我喜欢公开羞辱伴侣，让TA当众服从我。","category":"sadist"},{"id":36,"text":"在床上我最喜欢被打、被绑、被各种方式虐待。","category":"masochist"},{"id":37,"text":"我幻想拥有一个完全属于我的性奴，随时发泄。","category":"dominant"},{"id":38,"text":"被贬低、践踏尊严会让我高潮得更强烈。","category":"masochist"},{"id":39,"text":"我喜欢把疼痛和快感混合，让伴侣彻底臣服。","category":"sadist"},{"id":40,"text":"我天生更喜欢顺从、被支配、被虐待的感觉。","category":"submissive"}],"resultPage":{"title":"你的SM属性测试结果","description":"以下是你的四个维度得分（百分比越高，倾向越强）：","scores":{"dominant":{"name":"Dominant（主人/主导）","desc":"你喜欢掌控一切、命令别人，权力感让你兴奋。"},"submissive":{"name":"Submissive（奴隶/顺从）","desc":"你享受被支配、服从、失去控制的感觉。"},"sadist":{"name":"Sadist（施虐者）","desc":"你从给对方疼痛和羞辱中获得强烈快感。"},"masochist":{"name":"Masochist（受虐者）","desc":"你从承受疼痛、羞辱和束缚中获得极致快感。"}},"interpretation":"测试仅供参考。真实SM玩法必须双方完全同意、安全、有明确界限。很多人是Switch（可切换角色）。","advice":"玩得开心，但请务必遵守SSC原则（安全・理智・同意）。建议和伴侣一起沟通你的结果。"},"mobileTips":"建议竖屏使用，滑动或点击作答更顺畅。完成后可截图保存结果。"};
+        const type = 'sm';
+        let currentQuestion = 0;
+        let answers = [];
+        
+        const questions = [{"id":1,"text":"我喜欢把伴侣绑紧，让TA完全动不了，然后慢慢玩弄。","category":"dominant"},{"id":2,"text":"看着伴侣跪着求我允许高潮，我会特别兴奋。","category":"dominant"},{"id":3,"text":"我喜欢用鞭子或巴掌把伴侣打到皮肤发红。","category":"sadist"},{"id":4,"text":"被扇耳光、骂我是贱货时，我会瞬间湿了。","category":"masochist"},{"id":5,"text":"我幻想把伴侣关在笼子里，当宠物一样完全掌控。","category":"dominant"},{"id":6,"text":"被粗暴深喉到快窒息，我反而觉得很爽。","category":"masochist"},{"id":7,"text":"我喜欢命令伴侣穿暴露SM装，在外面偷偷玩弄TA。","category":"dominant"},{"id":8,"text":"乳头或下面被夹子夹到剧痛，我会特别兴奋。","category":"masochist"},{"id":9,"text":"我喜欢把精液或尿射在伴侣脸上，强迫TA吞下去。","category":"sadist"},{"id":10,"text":"被踩脸、吐口水、当成人肉家具，我会爽到不行。","category":"masochist"},{"id":11,"text":"性爱时我总想完全主导，决定什么时候让对方高潮。","category":"dominant"},{"id":12,"text":"被绑成羞耻姿势，长时间边缘控制不让高潮，我很享受。","category":"masochist"},{"id":13,"text":"看着伴侣因为疼痛哭着求饶，我会特别有征服感。","category":"sadist"},{"id":14,"text":"我幻想被多人轮流使用，当彻底的公共性奴。","category":"masochist"},{"id":15,"text":"我喜欢给伴侣戴项圈、牵狗链，像遛狗一样玩。","category":"dominant"},{"id":16,"text":"被电击棒刺激下面或乳头，那种又痛又麻的感觉让我上瘾。","category":"masochist"},{"id":17,"text":"我喜欢粗暴地拳交或用超大玩具折磨伴侣。","category":"sadist"},{"id":18,"text":"我更喜欢被命令、被打、被完全掌控。","category":"submissive"},{"id":19,"text":"我喜欢把伴侣吊起来，从各种角度随意侵犯。","category":"dominant"},{"id":20,"text":"被脚踩脸或下面，强迫舔脚喝尿，我会极度兴奋。","category":"masochist"},{"id":21,"text":"我幻想24小时控制伴侣的一切，包括上厕所权限。","category":"dominant"},{"id":22,"text":"疼痛和羞辱的话反而让我性欲爆棚。","category":"masochist"},{"id":23,"text":"我喜欢在伴侣身上滴热蜡，然后突然猛插。","category":"sadist"},{"id":24,"text":"被打屁股打到肿得坐不下去，我却觉得很刺激。","category":"masochist"},{"id":25,"text":"我喜欢命令伴侣自慰给我看，却不准高潮。","category":"dominant"},{"id":26,"text":"被蒙眼、塞口球，完全失去感官后被玩弄，我很喜欢。","category":"submissive"},{"id":27,"text":"我喜欢用贞操带锁住伴侣，只由我决定什么时候解锁。","category":"dominant"},{"id":28,"text":"被强迫喝体液、清理精液或当厕所，我会很兴奋。","category":"masochist"},{"id":29,"text":"我喜欢大声辱骂伴侣，说TA只是我的肉便器。","category":"sadist"},{"id":30,"text":"被吊起来鞭打、滴蜡、同时被插，我最渴望这种玩法。","category":"masochist"},{"id":31,"text":"我天生喜欢在性爱中担任主导一方。","category":"dominant"},{"id":32,"text":"我享受被彻底征服，当没有尊严的性奴隶。","category":"submissive"},{"id":33,"text":"我喜欢用各种工具长时间折磨伴侣直到TA崩溃。","category":"sadist"},{"id":34,"text":"被虐待到高潮失禁，对我来说是最极致的快乐。","category":"masochist"},{"id":35,"text":"我喜欢公开羞辱伴侣，让TA当众服从我。","category":"sadist"},{"id":36,"text":"在床上我最喜欢被打、被绑、被各种方式虐待。","category":"masochist"},{"id":37,"text":"我幻想拥有一个完全属于我的性奴，随时发泄。","category":"dominant"},{"id":38,"text":"被贬低、践踏尊严会让我高潮得更强烈。","category":"masochist"},{"id":39,"text":"我喜欢把疼痛和快感混合，让伴侣彻底臣服。","category":"sadist"},{"id":40,"text":"我天生更喜欢顺从、被支配、被虐待的感觉。","category":"submissive"}];
+        const totalQuestions = questions.length;
+        
+        function init() {
+            loadProgress();
+            renderQuestion();
+        }
+        
+        function loadProgress() {
+            const saved = localStorage.getItem('xunmengge_sm_progress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                currentQuestion = data.current || 0;
+                answers = data.answers || [];
+            }
+        }
+        
+        function saveProgress() {
+            localStorage.setItem('xunmengge_sm_progress', JSON.stringify({
+                current: currentQuestion,
+                answers: answers
+            }));
+        }
+        
+        function renderQuestion() {
+            if (currentQuestion >= totalQuestions) {
+                showResult();
+                return;
+            }
+            
+            const q = questions[currentQuestion];
+            document.getElementById('questionNum').textContent = '第 ' + (currentQuestion + 1) + ' 题 / 共 ' + totalQuestions + ' 题';
+            document.getElementById('questionText').textContent = q.text;
+            document.getElementById('progressFill').style.width = ((currentQuestion + 1) / totalQuestions * 100) + '%';
+            
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            
+            const options = quizData.options || [
+                {value: 5, text: '非常同意'},
+                {value: 4, text: '同意'},
+                {value: 3, text: '一般'},
+                {value: 2, text: '不同意'},
+                {value: 1, text: '完全不感兴趣'}
+            ];
+            
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn' + (answers[currentQuestion] === opt.value ? ' selected' : '');
+                btn.textContent = opt.text;
+                btn.onclick = () => selectOption(opt.value, btn);
+                container.appendChild(btn);
+            });
+            
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = answers[currentQuestion] === undefined;
+            document.getElementById('nextBtn').textContent = currentQuestion === totalQuestions - 1 ? '查看结果' : '下一题';
+        }
+        
+        function selectOption(value, btn) {
+            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            answers[currentQuestion] = value;
+            document.getElementById('nextBtn').disabled = false;
+            saveProgress();
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        }
+        
+        function showResult() {
+            document.getElementById('questionContainer').classList.add('hidden');
+            document.getElementById('resultContainer').style.display = 'block';
+            localStorage.removeItem('xunmengge_sm_progress');
+            
+            const categories = {};
+            questions.forEach((q, i) => {
+                if (!categories[q.category]) categories[q.category] = [];
+                categories[q.category].push(answers[i] || 3);
+            });
+            
+            let html = '';
+            for (const [cat, scores] of Object.entries(categories)) {
+                const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+                const percent = Math.round((avg - 1) / 4 * 100);
+                const info = (quizData.resultPage?.scores || {})[cat] || {name: cat, desc: ''};
+                html += '<div class="score-card"><div class="score-item"><span>' + info.name + '</span><span>' + percent + '%</span></div><div class="score-bar"><div class="score-fill" style="width:' + percent + '%"></div></div><p style="font-size:0.85em;color:#888;margin-top:10px">' + info.desc + '</p></div>';
+            }
+            
+            document.getElementById('scoreCards').innerHTML = html;
+        }
+        
+        init();
+    </script>
+</body>
+</html>
