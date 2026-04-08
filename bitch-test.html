@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>女奴接受度测试 - 你能承受多重的女奴调教？</title>
+    <meta name="description" content="诚实回答这80道极度直接的问题，测试你对成为彻底女奴的接受程度。答案越真实，结果越准。">
+    <meta name="theme-color" content="#1a1a2e">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+            touch-action: pan-y;
+        }
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .back-btn {
+            position: absolute;
+            left: 15px;
+            top: 15px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            color: #fff;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        h1 {
+            font-size: 1.3em;
+            color: #ff6b9d;
+            margin-bottom: 5px;
+        }
+        .subtitle {
+            font-size: 0.85em;
+            color: #888;
+        }
+        .progress-bar {
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 2px;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+        .question-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .question-num {
+            font-size: 0.85em;
+            color: #ff6b9d;
+            margin-bottom: 10px;
+        }
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .option-btn {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 16px;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+        .option-btn:hover, .option-btn:active {
+            background: rgba(255,107,157,0.2);
+            border-color: rgba(255,107,157,0.5);
+        }
+        .option-btn.selected {
+            background: rgba(255,107,157,0.3);
+            border-color: #ff6b9d;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        .nav-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .nav-btn.prev {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+        }
+        .nav-btn.next {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            color: #fff;
+        }
+        .nav-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .result-container {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .result-title {
+            font-size: 1.5em;
+            color: #ff6b9d;
+            margin-bottom: 20px;
+        }
+        .score-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        .score-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .score-item:last-child {
+            border-bottom: none;
+        }
+        .score-bar {
+            width: 60%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .score-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b9d, #c44569);
+            border-radius: 4px;
+        }
+        .restart-btn {
+            background: linear-gradient(135deg, #ff6b9d, #c44569);
+            border: none;
+            color: #fff;
+            padding: 14px 40px;
+            border-radius: 12px;
+            font-size: 1em;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .warning {
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid rgba(255, 107, 107, 0.3);
+            border-radius: 12px;
+            padding: 15px;
+            margin: 20px 0;
+            font-size: 0.85em;
+            color: #ff9999;
+        }
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="position: relative;">
+            <button class="back-btn" onclick="location.href='index.html'">←</button>
+            <h1>女奴接受度测试 - 你能承受多重的女奴调教？</h1>
+            <div class="subtitle">80题极露骨测试｜仅限18+女性</div>
+        </header>
+        
+        <div class="warning">内容极度露骨，仅供成人女性自我探索。请在完全私密环境下进行。现实中任何玩法必须双方完全同意、安全、有明确界限和安全词。</div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+        </div>
+        
+        <div class="question-container" id="questionContainer">
+            <div class="question-num" id="questionNum"></div>
+            <div class="question-text" id="questionText"></div>
+            <div class="options" id="optionsContainer"></div>
+            <div class="nav-buttons">
+                <button class="nav-btn prev" id="prevBtn" onclick="prevQuestion()">上一题</button>
+                <button class="nav-btn next" id="nextBtn" onclick="nextQuestion()" disabled>下一题</button>
+            </div>
+        </div>
+        
+        <div class="result-container" id="resultContainer">
+            <div class="result-title">你的女奴接受度测试结果</div>
+            <div id="scoreCards"></div>
+            <button class="restart-btn" onclick="location.reload()">重新测试</button>
+        </div>
+    </div>
+    
+    <script>
+        const quizData = {"title":"女奴接受度测试 - 你能承受多重的女奴调教？","subtitle":"80题极露骨测试｜仅限18+女性","description":"诚实回答这80道极度直接的问题，测试你对成为彻底女奴的接受程度。答案越真实，结果越准。","warning":"内容极度露骨，仅供成人女性自我探索。请在完全私密环境下进行。现实中任何玩法必须双方完全同意、安全、有明确界限和安全词。","mobileTips":"建议竖屏浏览，一题一屏慢慢作答。严格诚实回答，完成后可截图保存结果。","options":[{"value":5,"text":"非常愿意 / 超级兴奋"},{"value":4,"text":"愿意尝试"},{"value":3,"text":"可以接受"},{"value":2,"text":"不太愿意"},{"value":1,"text":"完全无法接受"}],"steps":[{"step":1,"title":"第一阶段：基础调教（第1-10题）","questions":[{"id":1,"text":"被主人用绳子绑成M字腿，完全无法合拢，任由玩弄下面。","category":"bondage"},{"id":2,"text":"被主人用力扇耳光、骂我是贱母狗、肉便器、骚货。","category":"humiliation"},{"id":3,"text":"主人用皮鞭或皮带抽打我的屁股、乳房和大腿，直到又红又肿。","category":"pain"},{"id":4,"text":"被主人按着头深喉到呕吐，眼泪鼻涕流一地却不准停。","category":"oral"},{"id":5,"text":"戴上狗项圈和狗链，像母狗一样被主人牵着在地上爬。","category":"petplay"},{"id":6,"text":"乳头和阴唇被金属夹子用力夹住，疼痛中还要被猛插。","category":"pain"},{"id":7,"text":"主人内射后强迫我用嘴把精液全部吸出来吞干净。","category":"cleanup"},{"id":8,"text":"被长期锁贞操带，只有主人允许才能高潮或自慰。","category":"denial"},{"id":9,"text":"被蒙眼、塞口球、戴耳塞，完全失去感官后被随意操弄。","category":"sensory"},{"id":10,"text":"主人当着我的面操其他女人，我只能跪在旁边看着。","category":"cuckquean"}]},{"step":2,"title":"第二阶段：羞辱与疼痛（第11-20题）","questions":[{"id":11,"text":"被主人用脚踩脸、踩胸、踩阴部，强迫我舔脚趾和鞋底。","category":"humiliation"},{"id":12,"text":"被吊起来鞭打，同时下面被大号假阳具猛烈抽插。","category":"pain"},{"id":13,"text":"主人命令我在公共场合穿无内裤短裙，并偷偷玩弄我。","category":"public"},{"id":14,"text":"接受主人拳交或超大玩具，直到我痛到哭却又高潮。","category":"extreme"},{"id":15,"text":"每天必须向主人汇报自慰细节，并跪着请求高潮许可。","category":"control"},{"id":16,"text":"被主人尿在身上、脸上或嘴里，当成他的专属尿壶。","category":"watersports"},{"id":17,"text":"被主人纹上羞耻字样如‘主人专属肉奴’或‘骚逼’。","category":"marking"},{"id":18,"text":"长时间被绑成羞耻姿势，只能用嘴服侍主人和他的朋友。","category":"bondage"},{"id":19,"text":"被主人和他的几个朋友一起轮流使用，当成公共性玩具。","category":"gangbang"},{"id":20,"text":"高潮后继续被强烈刺激，直到我失禁求饶哭着讨饶。","category":"overstimulation"}]},{"step":3,"title":"第三阶段：控制与公开（第21-30题）","questions":[{"id":21,"text":"主人用热蜡滴满我的乳房、阴部和全身，然后突然猛插。","category":"pain"},{"id":22,"text":"被主人命令一天都不准穿内裤，随时准备被操。","category":"control"},{"id":23,"text":"被连续扇耳光到脸肿，还必须跪下感谢主人。","category":"humiliation"},{"id":24,"text":"被主人当成人肉家具，坐在我身上玩手机同时用脚玩我。","category":"humiliation"},{"id":25,"text":"被锁贞操带一个月，只能靠主人用脚或玩具让我高潮。","category":"denial"},{"id":26,"text":"在镜子前被操，看着自己一脸淫荡被操烂的样子。","category":"humiliation"},{"id":27,"text":"接受主人用电击棒或电击枪刺激乳头、阴蒂和下面。","category":"pain"},{"id":28,"text":"被主人带到酒店，让陌生人操我而他只在旁边观看。","category":"cuckquean"},{"id":29,"text":"每天早上必须跪着给主人口交，作为一天的开始仪式。","category":"oral"},{"id":30,"text":"被主人用皮带专门抽打阴部，直到肿胀又红又痛。","category":"pain"}]},{"step":4,"title":"第四阶段：极端与多人（第31-40题）","questions":[{"id":31,"text":"主人命令我和另一个女奴一起表演 lesbian 秀给他看。","category":"public"},{"id":32,"text":"被主人彻底控制我的穿衣、吃饭、上厕所和出门权限。","category":"control"},{"id":33,"text":"接受被多人轮流内射，然后跪着把所有精液舔干净。","category":"gangbang"},{"id":34,"text":"被主人辱骂我是最低贱的母猪、只会发情的烂逼肉洞。","category":"humiliation"},{"id":35,"text":"被绑住后用冰块和热蜡交替刺激乳头、阴唇和全身。","category":"sensory"},{"id":36,"text":"被主人当宠物养，吃饭喝水都必须用狗盆，不准用手。","category":"petplay"},{"id":37,"text":"高潮次数被严格限制，一周只能高潮几次由主人决定。","category":"denial"},{"id":38,"text":"被主人带到小圈子公开展示我的奴性，让别人点评和玩弄。","category":"public"},{"id":39,"text":"接受主人用针刺乳头、阴唇或更重的永久标记方式。","category":"extreme"},{"id":40,"text":"我愿意24小时完全放弃自主权，成为主人的专属女奴。","category":"total"}]},{"step":5,"title":"第五阶段：深度臣服（第41-50题）","questions":[{"id":41,"text":"被主人强迫边被操边大声说出自己是最贱的母狗。","category":"humiliation"},{"id":42,"text":"主人用跳蛋或遥控震动棒让我在外面公共场合一直高潮。","category":"public"},{"id":43,"text":"被主人强迫清理他和其他女人做爱后的精液，包括舔逼。","category":"cleanup"},{"id":44,"text":"接受长时间的呼吸控制或轻度窒息玩法。","category":"extreme"},{"id":45,"text":"被主人命令不准说话，只能用狗叫或动作回应。","category":"petplay"},{"id":46,"text":"主人把我关在笼子里，只在需要时放出来使用。","category":"bondage"},{"id":47,"text":"被主人用各种大小的肛塞长时间扩张，边扩张边操。","category":"extreme"},{"id":48,"text":"接受主人拍摄我的羞耻视频，并威胁可能公开。","category":"humiliation"},{"id":49,"text":"被主人要求在家全裸，只准穿项圈和高跟鞋。","category":"control"},{"id":50,"text":"主人和朋友一起用我，当成免费的群P肉便器。","category":"gangbang"}]},{"step":6,"title":"第六阶段：重口与标记（第51-60题）","questions":[{"id":51,"text":"被主人用脚踩着头部，强迫我把脸埋在他屁股里舔。","category":"humiliation"},{"id":52,"text":"高潮边缘控制几小时，不准射直到主人满意。","category":"denial"},{"id":53,"text":"被主人命令在厕所里跪着等他尿完后舔干净。","category":"watersports"},{"id":54,"text":"接受主人用蜡烛、冰块、针等混合极端感官刺激。","category":"sensory"},{"id":55,"text":"被主人公开在网上发我的裸照或奴性照片（脸打码）。","category":"public"},{"id":56,"text":"主人让我和其他女奴比赛谁更贱，谁输了就受罚。","category":"humiliation"},{"id":57,"text":"被长期训练成只能通过疼痛才能高潮。","category":"pain"},{"id":58,"text":"主人把我送给别人使用一天，作为对我的考验。","category":"extreme"},{"id":59,"text":"接受主人对我进行全天候的规则和惩罚体系。","category":"control"},{"id":60,"text":"我愿意成为主人的终身财产，签订正式奴役协议。","category":"total"}]},{"step":7,"title":"第七阶段：极端玩法（第61-70题）","questions":[{"id":61,"text":"被主人用针刺穿乳头或阴唇进行临时或永久穿刺。","category":"extreme"},{"id":62,"text":"接受主人轻度scat或极端体液玩法作为惩罚。","category":"extreme"},{"id":63,"text":"被主人用医疗工具进行检查或扩张（如导尿、灌肠）。","category":"extreme"},{"id":64,"text":"主人命令我全天候戴口球或面罩，只准发出呜呜声。","category":"sensory"},{"id":65,"text":"被主人强迫在户外或车内被操，并可能被人看到。","category":"public"},{"id":66,"text":"接受主人用刀玩 sensation 或轻微划痕（无深伤）。","category":"extreme"},{"id":67,"text":"被主人要求每天写奴性日记，详细记录自己的淫荡想法。","category":"control"},{"id":68,"text":"主人把我当马骑，用马具和鞭子驱使我爬行。","category":"petplay"},{"id":69,"text":"被长时间边缘控制到精神崩溃，只求主人让我高潮。","category":"denial"},{"id":70,"text":"接受主人用火玩或热蜡大面积滴在敏感部位。","category":"pain"}]},{"step":8,"title":"第八阶段：终身臣服（第71-80题）","questions":[{"id":71,"text":"被主人命令不准直视他的眼睛，必须低头跪着。","category":"humiliation"},{"id":72,"text":"接受多人同时使用我的所有洞，当成一次性玩具。","category":"gangbang"},{"id":73,"text":"被主人用重物挂在乳夹或阴夹上，拉扯到极限。","category":"pain"},{"id":74,"text":"主人把我关在笼子里几天，只喂食和使用。","category":"bondage"},{"id":75,"text":"被强制进行双重或三重 penetration 到极限。","category":"extreme"},{"id":76,"text":"接受主人完全控制我的社交和手机，审查所有消息。","category":"control"},{"id":77,"text":"被主人用言语和动作把我贬低成毫无价值的性奴。","category":"humiliation"},{"id":78,"text":"长期佩戴象征奴隶身份的项圈或刺青，不准摘下。","category":"marking"},{"id":79,"text":"被主人训练成只能通过主人的命令才能达到高潮。","category":"control"},{"id":80,"text":"我愿意彻底放弃所有权利，成为主人24/7的终身女奴财产。","category":"total"}]}],"resultPage":{"title":"你的女奴接受度测试结果","description":"根据你的80题答案，以下是详细分析：","overallLevel":{"title":"整体女奴接受度判断","levels":{"low":{"name":"轻度接受（好奇型）","range":"总分 80-160","desc":"你对女奴元素有一定好奇，但接受度较低。更多停留在幻想，适合从最轻度的言语和轻微束缚开始。"},"medium":{"name":"中度接受（可尝试型）","range":"总分 161-240","desc":"你对成为女奴有明显接受度，愿意尝试中度调教。适合和高度信任的伴侣逐步实践。"},"high":{"name":"高度接受（重度女奴）","range":"总分 241-320","desc":"你有很强的女奴倾向，享受疼痛、羞辱、控制和被彻底支配的感觉。已接近重度M属性。"},"extreme":{"name":"极高接受（极重度女奴）","range":"总分 321-400","desc":"你对几乎所有重口女奴玩法接受度极高，愿意接近完全臣服和24/7终身奴役。需极高信任和严格安全措施。"}}},"scores":{"bondage":{"name":"束缚接受度","desc":"对被绑、限制行动、吊绑、笼子等的接受程度。"},"humiliation":{"name":"羞辱接受度","desc":"享受言语羞辱、贬低、公开羞耻、被当家具等的程度。"},"pain":{"name":"疼痛接受度","desc":"对鞭打、夹子、蜡烛、电击、针刺等疼痛玩法的耐受力。"},"control":{"name":"控制接受度","desc":"愿意被主人全面掌控日常生活、性爱和自由的程度。"},"extreme":{"name":"重口接受度","desc":"对多人、拳交、尿戏、针刺、呼吸控制、公开暴露等极端玩法的接受度。"}},"interpretation":"测试仅供娱乐与自我探索参考。得分越高，说明你在该维度上的女奴接受度越高。很多人是混合型（例如高羞辱+中疼痛）。","advice":{"low":"先从轻度言语羞辱、简单束缚、幻想分享和情话开始。和伴侣充分沟通你的界限和兴趣，不要急于尝试重口内容。","medium":"可以尝试中度玩法，如戴项圈、轻度鞭打、贞操带控制、日常规则。必须提前约定安全词（红/黄/绿），并每次结束后做好aftercare（售后照顾）。","high":"你适合较重的女奴调教。建议和伴侣签订详细的玩法协议，明确硬界限、软界限和惩罚规则。找有经验且负责任的主人，慢慢加深强度。","extreme":"极重度接受需要极高的互信和安全意识。建议在双方完全自愿的前提下逐步尝试，重视身体恢复和心理健康。推荐学习SSC/RACK原则，必要时咨询kink-friendly的专业人士。任何时候都可以喊停，保护自己和关系永远是第一位。"}},"submitText":"提交测试","successMessage":"测试完成！感谢你的诚实回答。","aftercareTips":"测试仅供娱乐。现实中任何BDSM玩法都必须基于双方完全同意、安全、有安全词，并做好充分的售后照顾（aftercare）。"};
+        const type = 'bitch';
+        let currentQuestion = 0;
+        let answers = [];
+        
+        const questions = [{"id":1,"text":"被主人用绳子绑成M字腿，完全无法合拢，任由玩弄下面。","category":"bondage"},{"id":2,"text":"被主人用力扇耳光、骂我是贱母狗、肉便器、骚货。","category":"humiliation"},{"id":3,"text":"主人用皮鞭或皮带抽打我的屁股、乳房和大腿，直到又红又肿。","category":"pain"},{"id":4,"text":"被主人按着头深喉到呕吐，眼泪鼻涕流一地却不准停。","category":"oral"},{"id":5,"text":"戴上狗项圈和狗链，像母狗一样被主人牵着在地上爬。","category":"petplay"},{"id":6,"text":"乳头和阴唇被金属夹子用力夹住，疼痛中还要被猛插。","category":"pain"},{"id":7,"text":"主人内射后强迫我用嘴把精液全部吸出来吞干净。","category":"cleanup"},{"id":8,"text":"被长期锁贞操带，只有主人允许才能高潮或自慰。","category":"denial"},{"id":9,"text":"被蒙眼、塞口球、戴耳塞，完全失去感官后被随意操弄。","category":"sensory"},{"id":10,"text":"主人当着我的面操其他女人，我只能跪在旁边看着。","category":"cuckquean"},{"id":11,"text":"被主人用脚踩脸、踩胸、踩阴部，强迫我舔脚趾和鞋底。","category":"humiliation"},{"id":12,"text":"被吊起来鞭打，同时下面被大号假阳具猛烈抽插。","category":"pain"},{"id":13,"text":"主人命令我在公共场合穿无内裤短裙，并偷偷玩弄我。","category":"public"},{"id":14,"text":"接受主人拳交或超大玩具，直到我痛到哭却又高潮。","category":"extreme"},{"id":15,"text":"每天必须向主人汇报自慰细节，并跪着请求高潮许可。","category":"control"},{"id":16,"text":"被主人尿在身上、脸上或嘴里，当成他的专属尿壶。","category":"watersports"},{"id":17,"text":"被主人纹上羞耻字样如‘主人专属肉奴’或‘骚逼’。","category":"marking"},{"id":18,"text":"长时间被绑成羞耻姿势，只能用嘴服侍主人和他的朋友。","category":"bondage"},{"id":19,"text":"被主人和他的几个朋友一起轮流使用，当成公共性玩具。","category":"gangbang"},{"id":20,"text":"高潮后继续被强烈刺激，直到我失禁求饶哭着讨饶。","category":"overstimulation"},{"id":21,"text":"主人用热蜡滴满我的乳房、阴部和全身，然后突然猛插。","category":"pain"},{"id":22,"text":"被主人命令一天都不准穿内裤，随时准备被操。","category":"control"},{"id":23,"text":"被连续扇耳光到脸肿，还必须跪下感谢主人。","category":"humiliation"},{"id":24,"text":"被主人当成人肉家具，坐在我身上玩手机同时用脚玩我。","category":"humiliation"},{"id":25,"text":"被锁贞操带一个月，只能靠主人用脚或玩具让我高潮。","category":"denial"},{"id":26,"text":"在镜子前被操，看着自己一脸淫荡被操烂的样子。","category":"humiliation"},{"id":27,"text":"接受主人用电击棒或电击枪刺激乳头、阴蒂和下面。","category":"pain"},{"id":28,"text":"被主人带到酒店，让陌生人操我而他只在旁边观看。","category":"cuckquean"},{"id":29,"text":"每天早上必须跪着给主人口交，作为一天的开始仪式。","category":"oral"},{"id":30,"text":"被主人用皮带专门抽打阴部，直到肿胀又红又痛。","category":"pain"},{"id":31,"text":"主人命令我和另一个女奴一起表演 lesbian 秀给他看。","category":"public"},{"id":32,"text":"被主人彻底控制我的穿衣、吃饭、上厕所和出门权限。","category":"control"},{"id":33,"text":"接受被多人轮流内射，然后跪着把所有精液舔干净。","category":"gangbang"},{"id":34,"text":"被主人辱骂我是最低贱的母猪、只会发情的烂逼肉洞。","category":"humiliation"},{"id":35,"text":"被绑住后用冰块和热蜡交替刺激乳头、阴唇和全身。","category":"sensory"},{"id":36,"text":"被主人当宠物养，吃饭喝水都必须用狗盆，不准用手。","category":"petplay"},{"id":37,"text":"高潮次数被严格限制，一周只能高潮几次由主人决定。","category":"denial"},{"id":38,"text":"被主人带到小圈子公开展示我的奴性，让别人点评和玩弄。","category":"public"},{"id":39,"text":"接受主人用针刺乳头、阴唇或更重的永久标记方式。","category":"extreme"},{"id":40,"text":"我愿意24小时完全放弃自主权，成为主人的专属女奴。","category":"total"},{"id":41,"text":"被主人强迫边被操边大声说出自己是最贱的母狗。","category":"humiliation"},{"id":42,"text":"主人用跳蛋或遥控震动棒让我在外面公共场合一直高潮。","category":"public"},{"id":43,"text":"被主人强迫清理他和其他女人做爱后的精液，包括舔逼。","category":"cleanup"},{"id":44,"text":"接受长时间的呼吸控制或轻度窒息玩法。","category":"extreme"},{"id":45,"text":"被主人命令不准说话，只能用狗叫或动作回应。","category":"petplay"},{"id":46,"text":"主人把我关在笼子里，只在需要时放出来使用。","category":"bondage"},{"id":47,"text":"被主人用各种大小的肛塞长时间扩张，边扩张边操。","category":"extreme"},{"id":48,"text":"接受主人拍摄我的羞耻视频，并威胁可能公开。","category":"humiliation"},{"id":49,"text":"被主人要求在家全裸，只准穿项圈和高跟鞋。","category":"control"},{"id":50,"text":"主人和朋友一起用我，当成免费的群P肉便器。","category":"gangbang"},{"id":51,"text":"被主人用脚踩着头部，强迫我把脸埋在他屁股里舔。","category":"humiliation"},{"id":52,"text":"高潮边缘控制几小时，不准射直到主人满意。","category":"denial"},{"id":53,"text":"被主人命令在厕所里跪着等他尿完后舔干净。","category":"watersports"},{"id":54,"text":"接受主人用蜡烛、冰块、针等混合极端感官刺激。","category":"sensory"},{"id":55,"text":"被主人公开在网上发我的裸照或奴性照片（脸打码）。","category":"public"},{"id":56,"text":"主人让我和其他女奴比赛谁更贱，谁输了就受罚。","category":"humiliation"},{"id":57,"text":"被长期训练成只能通过疼痛才能高潮。","category":"pain"},{"id":58,"text":"主人把我送给别人使用一天，作为对我的考验。","category":"extreme"},{"id":59,"text":"接受主人对我进行全天候的规则和惩罚体系。","category":"control"},{"id":60,"text":"我愿意成为主人的终身财产，签订正式奴役协议。","category":"total"},{"id":61,"text":"被主人用针刺穿乳头或阴唇进行临时或永久穿刺。","category":"extreme"},{"id":62,"text":"接受主人轻度scat或极端体液玩法作为惩罚。","category":"extreme"},{"id":63,"text":"被主人用医疗工具进行检查或扩张（如导尿、灌肠）。","category":"extreme"},{"id":64,"text":"主人命令我全天候戴口球或面罩，只准发出呜呜声。","category":"sensory"},{"id":65,"text":"被主人强迫在户外或车内被操，并可能被人看到。","category":"public"},{"id":66,"text":"接受主人用刀玩 sensation 或轻微划痕（无深伤）。","category":"extreme"},{"id":67,"text":"被主人要求每天写奴性日记，详细记录自己的淫荡想法。","category":"control"},{"id":68,"text":"主人把我当马骑，用马具和鞭子驱使我爬行。","category":"petplay"},{"id":69,"text":"被长时间边缘控制到精神崩溃，只求主人让我高潮。","category":"denial"},{"id":70,"text":"接受主人用火玩或热蜡大面积滴在敏感部位。","category":"pain"},{"id":71,"text":"被主人命令不准直视他的眼睛，必须低头跪着。","category":"humiliation"},{"id":72,"text":"接受多人同时使用我的所有洞，当成一次性玩具。","category":"gangbang"},{"id":73,"text":"被主人用重物挂在乳夹或阴夹上，拉扯到极限。","category":"pain"},{"id":74,"text":"主人把我关在笼子里几天，只喂食和使用。","category":"bondage"},{"id":75,"text":"被强制进行双重或三重 penetration 到极限。","category":"extreme"},{"id":76,"text":"接受主人完全控制我的社交和手机，审查所有消息。","category":"control"},{"id":77,"text":"被主人用言语和动作把我贬低成毫无价值的性奴。","category":"humiliation"},{"id":78,"text":"长期佩戴象征奴隶身份的项圈或刺青，不准摘下。","category":"marking"},{"id":79,"text":"被主人训练成只能通过主人的命令才能达到高潮。","category":"control"},{"id":80,"text":"我愿意彻底放弃所有权利，成为主人24/7的终身女奴财产。","category":"total"}];
+        const totalQuestions = questions.length;
+        
+        function init() {
+            loadProgress();
+            renderQuestion();
+        }
+        
+        function loadProgress() {
+            const saved = localStorage.getItem('xunmengge_bitch_progress');
+            if (saved) {
+                const data = JSON.parse(saved);
+                currentQuestion = data.current || 0;
+                answers = data.answers || [];
+            }
+        }
+        
+        function saveProgress() {
+            localStorage.setItem('xunmengge_bitch_progress', JSON.stringify({
+                current: currentQuestion,
+                answers: answers
+            }));
+        }
+        
+        function renderQuestion() {
+            if (currentQuestion >= totalQuestions) {
+                showResult();
+                return;
+            }
+            
+            const q = questions[currentQuestion];
+            document.getElementById('questionNum').textContent = '第 ' + (currentQuestion + 1) + ' 题 / 共 ' + totalQuestions + ' 题';
+            document.getElementById('questionText').textContent = q.text;
+            document.getElementById('progressFill').style.width = ((currentQuestion + 1) / totalQuestions * 100) + '%';
+            
+            const container = document.getElementById('optionsContainer');
+            container.innerHTML = '';
+            
+            const options = quizData.options || [
+                {value: 5, text: '非常同意'},
+                {value: 4, text: '同意'},
+                {value: 3, text: '一般'},
+                {value: 2, text: '不同意'},
+                {value: 1, text: '完全不感兴趣'}
+            ];
+            
+            options.forEach(opt => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn' + (answers[currentQuestion] === opt.value ? ' selected' : '');
+                btn.textContent = opt.text;
+                btn.onclick = () => selectOption(opt.value, btn);
+                container.appendChild(btn);
+            });
+            
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = answers[currentQuestion] === undefined;
+            document.getElementById('nextBtn').textContent = currentQuestion === totalQuestions - 1 ? '查看结果' : '下一题';
+        }
+        
+        function selectOption(value, btn) {
+            document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            answers[currentQuestion] = value;
+            document.getElementById('nextBtn').disabled = false;
+            saveProgress();
+        }
+        
+        function prevQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+        
+        function nextQuestion() {
+            if (currentQuestion < totalQuestions - 1) {
+                currentQuestion++;
+                renderQuestion();
+            } else {
+                showResult();
+            }
+        }
+        
+        function showResult() {
+            document.getElementById('questionContainer').classList.add('hidden');
+            document.getElementById('resultContainer').style.display = 'block';
+            localStorage.removeItem('xunmengge_bitch_progress');
+            
+            const categories = {};
+            questions.forEach((q, i) => {
+                if (!categories[q.category]) categories[q.category] = [];
+                categories[q.category].push(answers[i] || 3);
+            });
+            
+            let html = '';
+            for (const [cat, scores] of Object.entries(categories)) {
+                const avg = scores.reduce((a, b) => a + b, 0) / scores.length;
+                const percent = Math.round((avg - 1) / 4 * 100);
+                const info = (quizData.resultPage?.scores || {})[cat] || {name: cat, desc: ''};
+                html += '<div class="score-card"><div class="score-item"><span>' + info.name + '</span><span>' + percent + '%</span></div><div class="score-bar"><div class="score-fill" style="width:' + percent + '%"></div></div><p style="font-size:0.85em;color:#888;margin-top:10px">' + info.desc + '</p></div>';
+            }
+            
+            document.getElementById('scoreCards').innerHTML = html;
+        }
+        
+        init();
+    </script>
+</body>
+</html>
